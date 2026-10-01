@@ -1,0 +1,6 @@
+{
+  "name": "Tussen Ons",
+  "description": "Een interactieve gesprekservaring voor twee mensen. De juiste vraag op het juiste moment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,265 @@
+import { QuestionCard, Pack, ThemeType } from '../types';
+
+export const THEME_CONFIG: Record<ThemeType, {
+  name: string;
+  feeling: string;
+  bg: string;
+  cardBg: string;
+  text: string;
+  accent: string;
+  border: string;
+}> = {
+  linnen: {
+    name: 'Linnen',
+    feeling: 'warm & neutraal',
+    bg: '#FAF5F0',
+    cardBg: '#FFFFFF',
+    text: '#201A18',
+    accent: '#BD3A53',
+    border: '#EFE6DE',
+  },
+  salie: {
+    name: 'Salie',
+    feeling: 'rustig & natuurlijk',
+    bg: '#F3F6F4',
+    cardBg: '#FFFFFF',
+    text: '#1E2D24',
+    accent: '#446853',
+    border: '#D8E2DC',
+  },
+  blush: {
+    name: 'Blush',
+    feeling: 'zacht & intiem',
+    bg: '#FAF2F0',
+    cardBg: '#FFFFFF',
+    text: '#281C1B',
+    accent: '#BD3A53',
+    border: '#EED9D5',
+  },
+  espresso: {
+    name: 'Espresso',
+    feeling: 'avond, spanning, date night',
+    bg: '#1C1716',
+    cardBg: '#26201E',
+    text: '#FAF5F0',
+    accent: '#E58A9B',
+    border: '#3D3431',
+  },
+};
+
+export const STAGES = [
+  {
+    id: 'datum',
+    label: 'Date',
+    subtext: 'Nieuwsgierig aftasten, lachen & chemie ontdekken',
+    audience: 'Eerste Dates & Daten',
+    icon: 'Heart',
+  },
+  {
+    id: 'partner',
+    label: 'Mijn partner',
+    subtext: 'Samen verdiepen, herinneringen ophalen & herontdekken',
+    audience: 'Relatie & Samenwonen',
+    icon: 'Sparkles',
+  },
+  {
+    id: 'vrienden',
+    label: 'Vrienden & Vriendschap',
+    subtext: 'Gêne laten vallen, ontwapenende verhalen & loyaliteit',
+    audience: 'Beste vrienden & kringen',
+    icon: 'Users',
+  },
+  {
+    id: 'familie',
+    label: 'Familie',
+    subtext: 'Generatiebruggen bouwen & warme anekdotes delen',
+    audience: 'Ouders, broers/zussen & familie',
+    icon: 'Home',
+  },
+  {
+    id: 'groepsijsbrekers',
+    label: 'Groepsijsbrekers',
+    subtext: 'Tafelgesprekken, snelle dilemma’s & speelse aanwijzingen',
+    audience: 'Diners & groepen',
+    icon: 'Layers',
+  },
+] as const;
+
+export const VIBES = [
+  {
+    id: 'ontdekken',
+    label: 'Ontdekken',
+    tagline: 'Voor dingen die je nog niet van elkaar weet.',
+    description: 'Vragen die voorbij de smalltalk gaan en nieuwe lagen zichtbaar maken.',
+  },
+  {
+    id: 'lachen',
+    label: 'Lachen',
+    tagline: 'Luchtig, onverwacht en soms een beetje ongemakkelijk.',
+    description: 'Geen zware diepte, maar pure spontaniteit en anekdotes.',
+  },
+  {
+    id: 'flirten',
+    label: 'Flirten',
+    tagline: 'Chemie, spanning en net iets langer oogcontact.',
+    description: 'Subtiele opdrachten en observaties die de vonk aanwakkeren.',
+  },
+  {
+    id: 'verdiepen',
+    label: 'Verdiepen',
+    tagline: 'Voor gesprekken die normaal niet vanzelf beginnen.',
+    description: 'Eerlijke, kwetsbare vragen die écht beklijven.',
+  },
+  {
+    id: 'verrassen',
+    label: 'Verrassen',
+    tagline: 'Geen keuzes. Wij bepalen waar het gesprek heen gaat.',
+    description: 'Willekeurige mengeling van tempo, diepgang en speelse dilemma’s.',
+  },
+] as const;
+
+export const SAMPLE_QUESTIONS: QuestionCard[] = [
+  {
+    id: 'q1',
+    question: 'Wat is iets kleins waardoor jij je direct op je gemak voelt bij iemand?',
+    subtext: 'Neem rustig de tijd om allebei te antwoorden.',
+    type: 'vraag',
+    vibe: 'ontdekken',
+    stage: ['datum', 'partner', 'vrienden'],
+    vibeLabel: 'Ontdekken',
+    theme: 'linnen',
+  },
+  {
+    id: 'q2',
+    question: 'Wat zou jij vandaag doen als je wist dat niemand iets van je verwachtte?',
+    subtext: 'Geen verplichtingen, geen agenda, geen sociaal wenselijk antwoord.',
+    type: 'vraag',
+    vibe: 'ontdekken',
+    stage: ['datum', 'partner', 'vrienden', 'familie'],
+    vibeLabel: 'Ontdekken',
+    theme: 'salie',
+  },
+  {
+    id: 'q3',
+    question: 'Kijk elkaar 10 seconden in de ogen zonder te praten. Wie lacht als eerste?',
+    subtext: 'Leg de telefoon even plat op tafel.',
+    type: 'opdracht',
+    vibe: 'flirten',
+    stage: ['datum', 'partner'],
+    vibeLabel: 'Flirten',
+    theme: 'blush',
+  },
+  {
+    id: 'q4',
+    question: 'Wat is de meest gênante miskoop of hobbyfase die je ooit hebt gehad?',
+    subtext: 'Wees eerlijk — hoe specifieker, hoe beter.',
+    type: 'vraag',
+    vibe: 'lachen',
+    stage: ['datum', 'vrienden', 'familie', 'groepsijsbrekers'],
+    vibeLabel: 'Lachen',
+    theme: 'linnen',
+  },
+  {
+    id: 'q5',
+    question: 'Wat viel je als allereerste aan mij op toen we elkaar net zagen?',
+    subtext: 'Eerlijkheid boven diplomatie.',
+    type: 'vraag',
+    vibe: 'flirten',
+    stage: ['datum', 'partner'],
+    vibeLabel: 'Flirten',
+    theme: 'espresso',
+  },
+  {
+    id: 'q6',
+    question: 'Waarover verander je de laatste tijd langzaam maar zeker van gedachten?',
+    subtext: 'Een inzicht, een oordeel of een manier van leven.',
+    type: 'vraag',
+    vibe: 'verdiepen',
+    stage: ['partner', 'vrienden', 'familie'],
+    vibeLabel: 'Verdiepen',
+    theme: 'salie',
+  },
+  {
+    id: 'q7',
+    question: 'Wat is een gewoonte van mij die jij stiekem wel aandoenlijk vindt?',
+    subtext: 'Voor degene tegenover je.',
+    type: 'vraag',
+    vibe: 'ontdekken',
+    stage: ['datum', 'partner', 'vrienden'],
+    vibeLabel: 'Ontdekken',
+    theme: 'blush',
+  },
+  {
+    id: 'q8',
+    question: 'Als we vanavond één ongeschreven sociale regel mochten overtreden, welke zou dat zijn?',
+    subtext: 'Denk aan dessert als voorgerecht, of ineens van tafel weglopen voor een wandeling.',
+    type: 'dilemma',
+    vibe: 'lachen',
+    stage: ['datum', 'partner', 'vrienden', 'groepsijsbrekers'],
+    vibeLabel: 'Lachen',
+    theme: 'espresso',
+  },
+  {
+    id: 'q9',
+    question: 'Wanneer voelde jij je voor het laatst écht begrepen door iemand?',
+    subtext: 'Wat maakte dat moment anders dan een standaardgesprek?',
+    type: 'vraag',
+    vibe: 'verdiepen',
+    stage: ['partner', 'vrienden', 'familie'],
+    vibeLabel: 'Verdiepen',
+    theme: 'linnen',
+  },
+  {
+    id: 'q10',
+    question: 'Benoem drie dingen die je meteen zou inpakken voor een spontaan weekend weg binnen 1 uur.',
+    subtext: 'De ander mag raden wat je als vierde kiest.',
+    type: 'opdracht',
+    vibe: 'verrassen',
+    stage: ['datum', 'partner', 'vrienden', 'familie'],
+    vibeLabel: 'Verrassen',
+    theme: 'salie',
+  },
+];
+
+export const PACKS: Pack[] = [
+  {
+    id: 'eerste-date',
+    title: 'Eerste Date',
+    subtitle: 'Natuurlijke nieuwsgierigheid zonder interviewgevoel.',
+    description: 'Voorbij het werk, de woonplaats en het standaardlijstje. Vind snel uit of er echte chemie en speelsheid is.',
+    suitableFor: '1e en 2e ontmoetingen',
+    sampleQuestion: 'Wat is iets dat mensen vaak over jou aannemen, maar totaal niet klopt?',
+    count: 48,
+    theme: 'linnen',
+  },
+  {
+    id: 'date-night',
+    title: 'Date Night',
+    subtitle: 'Van routine naar oprechte aandacht.',
+    description: 'Speciaal ontworpen voor koppels die samen uit eten gaan of thuis op de bank zitten en de telefoons écht willen wegleggen.',
+    suitableFor: 'Daten & Jonge Koppels',
+    sampleQuestion: 'Wat is de leukste verrassing die ik je ooit heb gegeven, of die je nog van mij hoopt te krijgen?',
+    count: 65,
+    theme: 'blush',
+  },
+  {
+    id: 'weekend-weg',
+    title: 'Weekend Weg',
+    subtitle: 'Trage ochtenden en lange avonden.',
+    description: 'Diepere vragen, reisdilemma’s en anekdotes voor tijdens autoritten, wandelingen of een fles wijn bij de open haard.',
+    suitableFor: 'Reizen & Uitstapjes',
+    sampleQuestion: 'Als we morgen samen naar een willekeurige stad mogen verhuizen voor 3 maanden, waar gaan we heen?',
+    count: 52,
+    theme: 'salie',
+  },
+  {
+    id: 'jaren-samen',
+    title: 'We kennen elkaar al jaren',
+    subtitle: 'Ontdekken wat je nog niet wist.',
+    description: 'Zelfs na vijf, tien of twintig jaar zijn er verhalen en verlangens die nog nooit ter sprake zijn gekomen.',
+    suitableFor: 'Langdurige relaties',
+    sampleQuestion: 'Op welk moment in onze tijd samen was je stiekem het allertrotsst op hoe we iets hebben opgelost?',
+    count: 70,
+    theme: 'espresso',
+  },
+];
