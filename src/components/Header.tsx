@@ -21,10 +21,16 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Clean Consumer Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#6E625D]">
           <a
-            href="#herkenning"
+            href="#probeer-het"
             className="hover:text-[#BD3A53] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#BD3A53] hover:after:w-full after:transition-all whitespace-nowrap"
           >
-            Waarom Tussen Ons
+            Probeer een vraag
+          </a>
+          <a
+            href="#herkenbaar"
+            className="hover:text-[#BD3A53] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#BD3A53] hover:after:w-full after:transition-all whitespace-nowrap"
+          >
+            Herkenbaar?
           </a>
           <a
             href="#hoe-het-werkt"
@@ -36,19 +42,13 @@ export const Header: React.FC<HeaderProps> = ({
             href="#vibes"
             className="hover:text-[#BD3A53] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#BD3A53] hover:after:w-full after:transition-all whitespace-nowrap"
           >
-            Sferen & Packs
+            Sferen & Diepte
           </a>
           <a
             href="#plus"
             className="hover:text-[#BD3A53] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#BD3A53] hover:after:w-full after:transition-all whitespace-nowrap"
           >
-            Plus & Abonnementen
-          </a>
-          <a
-            href="#installeren"
-            className="hover:text-[#BD3A53] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#BD3A53] hover:after:w-full after:transition-all whitespace-nowrap"
-          >
-            Beginscherm
+            Tussen Ons Plus
           </a>
           <a
             href="#faq"

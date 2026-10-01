@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, Clock, ShieldCheck, Heart, Sparkles, Smartphone } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export const BrandPhilosophy: React.FC = () => {
   return (
@@ -8,9 +8,7 @@ export const BrandPhilosophy: React.FC = () => {
         
         {/* Editorial Section Kicker */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#BD3A53] mb-3 font-sans">
-            <span>De Merkgedachte</span>
-            <span aria-hidden="true">·</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EFE6DE] text-xs font-bold uppercase tracking-widest text-[#BD3A53] mb-4 shadow-2xs font-sans">
             <span>Waarom Tussen Ons bestaat</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl text-[#201A18] tracking-tight mb-6 leading-tight text-balance font-normal">
@@ -32,7 +30,7 @@ export const BrandPhilosophy: React.FC = () => {
                 Nieuwsgierigheid als kompas
               </h3>
               <p className="text-xs sm:text-sm text-[#6E625D] leading-relaxed">
-                Tussen Ons zegt nooit: <em>&ldquo;jullie praten te weinig&rdquo;</em> of <em>&ldquo;jullie relatie moet verbeteren&rdquo;</em>. We zeggen simpelweg: er valt waarschijnlijk nog iets te ontdekken. Nieuwsgierigheid voelt positief en werkt bij een eerste date evengoed als bij een huwelijk van twintig jaar.
+                Tussen Ons zegt nooit: <em>&ldquo;jullie praten te weinig&rdquo;</em> of <em>&ldquo;jullie relatie moet verbeteren&rdquo;</em>. We zeggen simpelweg: er valt waarschijnlijk nog iets te ontdekken. Nieuwsgierigheid voelt positief en werkt bij een eerste date evengoed als bij een vriendschap of relatie van twintig jaar.
               </p>
             </div>
             <div className="pt-6 mt-6 border-t border-[#EFE6DE]/60 text-xs text-[#6E625D] italic">
@@ -48,11 +46,11 @@ export const BrandPhilosophy: React.FC = () => {
                 Niet meer schermtijd. Meer gesprekstijd.
               </h3>
               <p className="text-xs sm:text-sm text-[#6E625D] leading-relaxed">
-                Vrijwel iedere app optimaliseert voor meer clicks, langere sessies en eindeloos scrollen. Onze beste sessie is er één waarin je vergeet naar je telefoon te kijken. Onze belangrijkste interne maatstaf is <strong>Conversation Minutes</strong>.
+                Een goede sessie is niet de sessie waarin je lang naar Tussen Ons kijkt. Het is de sessie waarin je vergeet dat Tussen Ons nog openstaat. De app opent het gesprek, waarna jullie de rest samen doen.
               </p>
             </div>
             <div className="pt-6 mt-6 border-t border-[#EFE6DE]/60 text-xs font-semibold text-[#BD3A53]">
-              De app opent het gesprek. Jullie maken het bijzonder.
+              De app verdwijnt naar de achtergrond.
             </div>
           </div>
 

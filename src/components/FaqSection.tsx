@@ -1,42 +1,43 @@
 import React, { useState } from 'react';
-import { ChevronDown, Smartphone } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 interface FaqItem {
   question: string;
   answer: string;
-  category: string;
 }
 
 const FAQS: FaqItem[] = [
   {
-    category: 'Installatie & Beginscherm',
-    question: 'Hoe zet ik Tussen Ons op mijn beginscherm (iPhone & Android)?',
-    answer: 'Op iPhone open je deze website in Safari, tik je onderaan op het Deel-icoon (vierkantje met pijl omhoog) en kies je „Zet op beginscherm”. Op Android open je Chrome, tik je rechtsboven op de 3 puntjes en kies je „App installeren” of „Toevoegen aan startscherm”. De app start vervolgens direct fullscreen zonder browserbalken.',
+    question: 'Wat is Tussen Ons precies?',
+    answer: 'Tussen Ons is een interactieve gesprekservaring voor twee mensen. Geen spel met punten of een zware psychologische quiz, maar een intuïtieve gids die vragen, dilemma’s en kleine opdrachten aanreikt afgestemd op wie er tegenover je zit. Eén vraag op tafel, daarna gaat de aandacht weer naar elkaar.',
   },
   {
-    category: 'Installatie & Beginscherm',
-    question: 'Heb ik een App Store of Google Play Store download nodig?',
-    answer: 'Nee. Tussen Ons is gebouwd als een moderne Progressive Web App (PWA). Je hoeft niets te downloaden uit de App Store, hebt geen account nodig en het kost geen opslagruimte. Je voegt hem direct toe vanuit je browser.',
+    question: 'Is het alleen voor koppels?',
+    answer: 'Zeker niet. Tussen Ons werkt fantastisch op een eerste date of tijdens date nights, maar heeft even sterke sferen voor goede vrienden, familie en gezelschappen aan tafel. Dezelfde vraag voelt totaal anders afhankelijk van wie er tegenover je zit.',
   },
   {
-    category: 'Werking & Ervaring',
-    question: 'Wat is Tussen Ons en hoe verschilt het van traditionele vragenkaartjes?',
-    answer: 'Traditionele vragenkaartjes zijn statisch, zwaar om mee te nemen en houden geen rekening met wie er tegenover je zit. Tussen Ons stemt de vragen, dilemma’s en opdrachten af op jullie sfeer (ontdekken, lachen, flirten, verdiepen of groepsijsbrekers). Zodra de vraag op tafel ligt, nodigt de app uit om de telefoon plat te leggen.',
+    question: 'Hoe bepaalt Tussen Ons welke vraag past?',
+    answer: 'De app combineert drie intuïtieve lagen: wie er tegenover je zit (Gezelschap: date, partner, vrienden, familie), de gewenste energie (Sfeer: ontdekken, lachen, flirten, verdiepen of verrassen) en de diepte die vandaag goed voelt. Hierdoor voelt iedere vraag raak en natuurlijk.',
   },
   {
-    category: 'Voor Dates & Koppels',
-    question: 'Welke sferen werken het beste voor een eerste date of date night?',
-    answer: 'Voor een eerste date kies je ‘Date’ en de sfeer ‘Ontdekken’ of ‘Lachen’ voor een ontspannen, speelse sfeer zonder sollicitatiegevoel. Voor koppels tijdens een etentje of op de bank zijn ‘Mijn partner’, ‘Flirten’ en ‘Verdiepen’ ideaal om voorbij de dagelijkse logistiek te komen.',
+    question: 'Kunnen we zelf bepalen hoe diep het gesprek wordt?',
+    answer: 'Ja, altijd. Jullie houden de volledige regie. Met één tik wissel je tussen luchtig, nieuwsgierig, persoonlijk en diep. Je kunt tijdens het gesprek op ieder moment kiezen voor „Iets luchtiger” of juist „Iets persoonlijker”.',
   },
   {
-    category: 'Privacy & Veiligheid',
-    question: 'Worden onze gesprekken of antwoorden ergens opgeslagen?',
-    answer: 'Nee, absoluut niet. Wat tussen jullie wordt gezegd, blijft tussen jullie. Tussen Ons bewaart geen antwoorden, heeft geen microfoontoegang en verkoopt geen gegevens. De app draait 100% discreet en lokaal.',
+    question: 'Moeten we antwoorden in de app invullen?',
+    answer: 'Nee, nooit. Er zijn geen invoervelden, formulieren of scores. Tussen Ons geeft alleen het vonkje door de vraag te tonen; het gesprek vindt plaats tussen jullie in de kamer, niet op een scherm.',
   },
   {
-    category: 'Toegang & Kosten',
-    question: 'Is Tussen Ons gratis te gebruiken?',
-    answer: 'Ja, de basiservaring is volledig gratis en direct te openen. Met Tussen Ons Plus ontgrendel je daarnaast exclusieve themapacks (zoals Weekend Weg) en speciale verdiepende interacties.',
+    question: 'Worden onze gesprekken opgeslagen?',
+    answer: 'Nee, absoluut niet. Wat tussen jullie wordt gezegd, blijft tussen jullie. De app luistert niet mee, slaat geen antwoorden op en bouwt geen dataprofielfiches. Jouw privacy is heilig.',
+  },
+  {
+    question: 'Kunnen we Tussen Ons gratis proberen?',
+    answer: 'Ja. Tussen Ons Basis is altijd 100% gratis en direct te gebruiken. Daarnaast kun je Tussen Ons Plus 7 dagen kosteloos uitproberen, zodat je het verschil kunt ervaren van een doordeweekse date tot een weekend met vrienden. Zoek je eenmalig iets voor een specifiek moment? Dan kun je ook losse themapacks aanschaffen voor €3,99 zonder abonnement.',
+  },
+  {
+    question: 'Moeten we een app downloaden?',
+    answer: 'Nee, je hebt geen App Store of Google Play Store download nodig. Je bewaart Tussen Ons direct vanuit je mobiele browser (Safari of Chrome) op je beginscherm in tien seconden. De app start daarna direct zonder browserbalken.',
   },
 ];
 
@@ -53,16 +54,14 @@ export const FaqSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase text-[#BD3A53] mb-3 font-sans">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EFE6DE] text-xs font-bold uppercase tracking-widest text-[#BD3A53] mb-4 shadow-2xs font-sans">
             <span>Veelgestelde Vragen</span>
-            <span aria-hidden="true">·</span>
-            <span>Alles over Tussen Ons</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl text-[#201A18] tracking-tight mb-4 font-normal">
-            Veelgestelde vragen
+            Vragen & antwoorden
           </h2>
-          <p className="text-sm sm:text-base text-[#6E625D] font-normal leading-relaxed text-balance">
-            Alles over het installeren op je beginscherm, privacy en hoe de gesprekservaring werkt.
+          <p className="text-base sm:text-lg text-[#6E625D] font-normal leading-relaxed text-balance">
+            Alles over hoe de gesprekservaring werkt, de privacy en hoe je begint.
           </p>
         </div>
 
@@ -82,14 +81,9 @@ export const FaqSection: React.FC = () => {
                   className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#BD3A53] block mb-1 font-sans">
-                      {faq.category}
-                    </span>
-                    <h3 className="font-serif text-lg sm:text-xl text-[#201A18] font-normal leading-snug">
-                      {faq.question}
-                    </h3>
-                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl text-[#201A18] font-normal leading-snug">
+                    {faq.question}
+                  </h3>
                   <div className={`p-1 rounded-full text-[#BD3A53] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
                     <ChevronDown className="w-5 h-5" />
                   </div>
@@ -103,14 +97,6 @@ export const FaqSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Bottom prompt */}
-        <div className="mt-10 text-center text-xs text-[#6E625D]">
-          <span>Klaar om te beginnen? </span>
-          <a href="#installeren" className="text-[#BD3A53] font-semibold hover:underline">
-            Zet Tussen Ons op je beginscherm →
-          </a>
         </div>
 
       </div>

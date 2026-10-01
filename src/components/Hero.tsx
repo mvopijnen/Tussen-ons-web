@@ -1,54 +1,57 @@
 import React from 'react';
 import { PhoneMockup } from './PhoneMockup';
-import { Sparkles, ArrowRight, Smartphone, ShieldCheck, Check } from 'lucide-react';
+import { ArrowRight, MessageSquareHeart } from 'lucide-react';
 
 interface HeroProps {
-  onOpenInstall: () => void;
+  onTryQuestion: () => void;
   onExplore: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
-  onOpenInstall,
+  onTryQuestion,
   onExplore,
 }) => {
   return (
-    <section className="relative pt-10 pb-20 sm:pt-16 sm:pb-28 overflow-hidden bg-[#FAF5F0]">
+    <section className="relative pt-12 pb-20 sm:pt-18 sm:pb-28 overflow-hidden bg-[#FAF5F0]">
       
-      {/* Soft Ethereal Atmospheric Background Glows matching the screenshots */}
+      {/* Soft Ethereal Atmospheric Background Glows */}
       <div className="absolute top-0 right-1/4 w-[650px] h-[550px] bg-[#F7D8D3]/50 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-10 left-10 w-[550px] h-[450px] bg-[#FAE6E0]/40 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Hero Top Copy */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           
+          {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#EFE6DE] text-xs font-bold uppercase tracking-widest text-[#BD3A53] mb-6 shadow-2xs font-sans">
-            <Sparkles className="w-3.5 h-3.5 text-[#BD3A53]" />
-            <span>Slimme Gesprekservaring voor Twee Mensen</span>
+            <span>Voor gesprekken die anders misschien nooit waren begonnen</span>
           </div>
 
+          {/* H1 */}
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-[#201A18] leading-[1.08] mb-6 text-balance">
-            Betere gesprekken beginnen <br className="hidden sm:inline" />
-            <span className="italic text-[#BD3A53]">met de juiste vraag.</span>
+            De juiste vraag. <br />
+            <span className="italic text-[#BD3A53]">Op het juiste moment.</span>
           </h1>
 
-          <p className="font-serif text-xl sm:text-2xl text-[#201A18]/85 italic mb-6 max-w-2xl mx-auto">
-            De juiste vraag. Op het juiste moment.
+          {/* Subheadline */}
+          <p className="font-serif text-xl sm:text-2xl text-[#201A18]/90 italic mb-6 max-w-2xl mx-auto leading-relaxed">
+            Soms heb je elkaar al jaren tegenover je. Soms pas tien minuten. Er valt bijna altijd nog iets te ontdekken.
           </p>
 
+          {/* Explanation */}
           <p className="text-base sm:text-lg text-[#6E625D] max-w-2xl mx-auto leading-relaxed mb-10 text-balance font-normal">
-            Geen regels, geen puntentelling van winnaars. Alleen echte, onverdeelde aandacht voor degene die tegenover je zit. Installeer direct op je beginscherm zonder App Store download.
+            Tussen Ons stemt vragen, dilemma’s en kleine opdrachten af op wie er tegenover je zit, jullie sfeer en hoeveel diepgang op dat moment goed voelt. Eén vraag opent het gesprek. Daarna gaat de aandacht weer naar elkaar.
           </p>
 
           {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button
-              onClick={onOpenInstall}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl text-xs font-semibold uppercase tracking-wider text-white bg-[#BD3A53] hover:bg-[#A72D45] transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 group"
+              onClick={onTryQuestion}
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl text-xs font-semibold uppercase tracking-wider text-white bg-[#BD3A53] hover:bg-[#A72D45] transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center justify-center gap-2 group"
             >
-              <Smartphone className="w-4 h-4" />
-              <span>Zet op je beginscherm</span>
+              <MessageSquareHeart className="w-4 h-4" />
+              <span>Probeer een vraag</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
 
@@ -56,45 +59,34 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={onExplore}
               className="w-full sm:w-auto px-7 py-4 rounded-2xl text-xs font-semibold text-[#201A18] bg-white border border-[#EFE6DE] hover:border-[#BD3A53] hover:bg-[#FAF0ED] transition-all duration-200 shadow-2xs cursor-pointer flex items-center justify-center gap-2"
             >
-              <span>Bekijk hoe het werkt ↓</span>
+              <span>Ontdek hoe Tussen Ons werkt ↓</span>
             </button>
           </div>
 
-          {/* Trust points */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#6E625D]">
-            <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-[#BD3A53]" />
-              Geen download of App Store nodig
-            </span>
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#BD3A53]" />
-              100% privé & vertrouwelijk
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-[#BD3A53]" />
-              Werkt op iPhone & Android
-            </span>
+          {/* Trustregel */}
+          <div className="text-xs sm:text-sm text-[#6E625D] font-medium">
+            Geen antwoorden invullen · Geen scores · Geen oordeel · Alleen jullie gesprek
           </div>
 
         </div>
 
-        {/* Hero Visual: Two Phone Mockups Side-by-Side displaying the actual App UI */}
-        <div className="relative max-w-4xl mx-auto pt-4">
+        {/* Hero Visual: Two Phone Mockups Side-by-Side with Natural Labels */}
+        <div className="relative max-w-4xl mx-auto pt-2">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
             
             {/* Phone 1: Onboarding Screen */}
             <div className="flex flex-col items-center">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#6E625D] mb-3 font-sans">
-                Scherm 1: Stilte & Verbinding
+              <span className="text-xs font-semibold tracking-wider text-[#6E625D] mb-3 font-sans">
+                Een moment voor jullie
               </span>
               <PhoneMockup screen="onboarding" />
             </div>
 
             {/* Phone 2: Gezelschap Kiezer */}
             <div className="flex flex-col items-center">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#6E625D] mb-3 font-sans">
-                Scherm 2: Met wie praat jij vandaag?
+              <span className="text-xs font-semibold tracking-wider text-[#6E625D] mb-3 font-sans">
+                Met wie ben je vandaag?
               </span>
               <PhoneMockup screen="selector" />
             </div>

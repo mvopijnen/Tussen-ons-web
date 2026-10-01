@@ -1,167 +1,155 @@
 import React, { useState } from 'react';
-import { Heart, Share2, Check, Sparkles, Lock, Smartphone, ArrowRight } from 'lucide-react';
+import { Share2, Check, ArrowRight, Sparkles, Feather, Compass, HeartHandshake } from 'lucide-react';
 
-const TEASER_ITEMS = [
-  {
-    type: 'Vraag',
-    tag: 'Vraag van Vandaag',
-    question: 'Wat is iets kleins waardoor jij je direct op je gemak voelt bij iemand?',
-    hint: 'Ideaal om het ijs te breken en elkaar te ontspannen.',
-  },
-  {
-    type: 'Dilemma',
-    tag: 'Date Dilemma',
-    question: 'Zou jij liever willen dat je partner altijd hardop denkt, of dat jullie elkaars gedachten voor één dag kunnen lezen?',
-    hint: 'Gegarandeerd onbedaarlijk lachen en onverwachte discussies.',
-  },
-  {
-    type: 'Opdracht',
-    tag: 'Spannende Opdracht',
-    question: 'Kijk elkaar 10 seconden lang diep in de ogen zonder te praten of te glimlachen. Wie begint als eerste te lachen?',
-    hint: 'Brengt de fysieke spanning en chemie direct terug.',
-  },
-  {
-    type: 'Herinnering',
-    tag: 'Herinneringsmoment',
-    question: 'Wat is een moment van de afgelopen tijd samen waarop je dacht: “Ja, wij passen echt perfect bij elkaar”?',
-    hint: 'Haalt warme herinneringen naar boven en verdiept de verbinding.',
-  },
-];
-
-interface ConversationOfTheDayProps {
-  onOpenInstallModal: () => void;
+interface QuestionItem {
+  id: string;
+  text: string;
+  depth: 'luchtig' | 'nieuwsgierig' | 'persoonlijk';
+  label: string;
 }
 
-export const ConversationOfTheDay: React.FC<ConversationOfTheDayProps> = ({ onOpenInstallModal }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasLiked, setHasLiked] = useState(false);
-  const [likes, setLikes] = useState(248);
+const QUESTIONS: Record<'luchtig' | 'nieuwsgierig' | 'persoonlijk', string[]> = {
+  luchtig: [
+    'Wat is een eigenaardige gewoonte van jezelf die bijna niemand anders ziet?',
+    'Welke kleine, onbenullige ergernis vind je stiekem heerlijk om over te klagen?',
+    'Als we nu zonder plan in de auto stappen, waar rijden we dan naartoe?',
+  ],
+  nieuwsgierig: [
+    'Wat is iets kleins waardoor jij je direct op je gemak voelt bij iemand?',
+    'Welke herinnering van de afgelopen maand tovert meteen een glimlach op je gezicht?',
+    'Waarover verander je de laatste tijd langzaam maar zeker van gedachten?',
+  ],
+  persoonlijk: [
+    'Wat is een droom die je al lang met je meedraagt, maar zelden hardop uitspreekt?',
+    'Wanneer voelde jij je de afgelopen tijd echt even oprecht gezien?',
+    'Wat is iets waarin jij jezelf de afgelopen jaren het meest hebt zien veranderen?',
+  ],
+};
+
+export const ConversationOfTheDay: React.FC = () => {
+  const [currentDepth, setCurrentDepth] = useState<'luchtig' | 'nieuwsgierig' | 'persoonlijk'>('nieuwsgierig');
+  const [questionIndices, setQuestionIndices] = useState<Record<string, number>>({
+    luchtig: 0,
+    nieuwsgierig: 0,
+    persoonlijk: 0,
+  });
   const [copied, setCopied] = useState(false);
 
-  const currentItem = TEASER_ITEMS[currentIndex];
+  const activeQuestionList = QUESTIONS[currentDepth];
+  const activeIndex = questionIndices[currentDepth];
+  const activeQuestion = activeQuestionList[activeIndex % activeQuestionList.length];
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % TEASER_ITEMS.length);
+    setQuestionIndices((prev) => ({
+      ...prev,
+      [currentDepth]: (prev[currentDepth] + 1) % activeQuestionList.length,
+    }));
   };
 
-  const handleLike = () => {
-    if (!hasLiked) {
-      setLikes((p) => p + 1);
-      setHasLiked(true);
-    } else {
-      setLikes((p) => p - 1);
-      setHasLiked(false);
-    }
+  const handleSetDepth = (depth: 'luchtig' | 'nieuwsgierig' | 'persoonlijk') => {
+    setCurrentDepth(depth);
+    setQuestionIndices((prev) => ({
+      ...prev,
+      [depth]: (prev[depth] + 1) % QUESTIONS[depth].length,
+    }));
   };
 
   const handleShare = () => {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(`"${currentItem.question}" — Tussen Ons Voorproefje`);
+      navigator.clipboard.writeText(`"${activeQuestion}" — Tussen Ons`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF5F0] border-t border-[#EFE6DE]">
+    <section id="probeer-het" className="py-20 sm:py-28 bg-[#FAF5F0] border-t border-[#EFE6DE] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase text-[#BD3A53] mb-3 font-sans">
-            <span>Interactief Voorproefje</span>
-            <span aria-hidden="true">·</span>
-            <span>Probeer 3 gratis vragen</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EFE6DE] text-xs font-bold uppercase tracking-widest text-[#BD3A53] mb-4 shadow-2xs font-sans">
+            <span>Probeer het</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#201A18] tracking-tight mb-4 font-normal">
-            Ervaar zelf waarom de content het gesprek is
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#201A18] tracking-tight mb-4 font-normal">
+            Genoeg over Tussen Ons. <br className="hidden sm:inline" />
+            <span className="italic text-[#BD3A53]">Probeer het.</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#6E625D] font-normal leading-relaxed text-balance">
-            Dit is pas het topje van de ijsberg. Klik door de eerste vragen en dilemma’s. Wil je de overige 500+ vragen ontgrendelen? Zet Tussen Ons op je beginscherm of start Plus.
+          <p className="text-base sm:text-lg text-[#6E625D] font-normal leading-relaxed text-balance">
+            Eén vraag kan genoeg zijn om een gesprek een onverwachte kant op te sturen.
           </p>
         </div>
 
-        {/* Interactive Free Teaser Card */}
-        <div className="bg-white border border-[#EFE6DE] rounded-3xl p-8 sm:p-12 shadow-xs text-center relative overflow-hidden mb-8">
+        {/* Card Component */}
+        <div className="bg-white border border-[#EFE6DE] rounded-3xl p-8 sm:p-14 shadow-xs text-center relative overflow-hidden transition-all">
           
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="px-3 py-1 bg-[#FAF0ED] text-[#BD3A53] rounded-full text-[11px] font-bold uppercase tracking-wider font-sans">
-              {currentItem.tag} ({currentIndex + 1} van {TEASER_ITEMS.length} gratis voorproefjes)
+          {/* Depth Indicator Pill */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#FAF0ED] text-[#BD3A53] text-xs font-semibold tracking-wider font-sans">
+              {currentDepth === 'luchtig' && <Feather className="w-3.5 h-3.5" />}
+              {currentDepth === 'nieuwsgierig' && <Compass className="w-3.5 h-3.5" />}
+              {currentDepth === 'persoonlijk' && <HeartHandshake className="w-3.5 h-3.5" />}
+              <span className="capitalize">{currentDepth}</span>
             </span>
           </div>
 
-          <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#201A18] leading-snug tracking-tight mb-4 text-balance max-w-2xl mx-auto font-normal">
-            &ldquo;{currentItem.question}&rdquo;
+          {/* The Question */}
+          <blockquote className="font-serif text-2xl sm:text-4xl text-[#201A18] leading-snug tracking-tight mb-10 text-balance max-w-2xl mx-auto font-normal min-h-[100px] flex items-center justify-center">
+            &ldquo;{activeQuestion}&rdquo;
           </blockquote>
 
-          <p className="text-xs text-[#6E625D] mb-8 italic">
-            💡 {currentItem.hint}
-          </p>
-
+          {/* Action Row: Nog één + Iets luchtiger + Iets persoonlijker */}
           <div className="flex items-center justify-center gap-3 pt-6 border-t border-[#EFE6DE]/60 flex-wrap">
+            
+            {/* Nog één */}
             <button
-              onClick={handleLike}
-              className={`flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-xs font-semibold border transition-colors cursor-pointer ${
-                hasLiked
+              onClick={handleNext}
+              className="px-6 py-3 rounded-2xl text-xs font-semibold text-white bg-[#BD3A53] hover:bg-[#A72D45] transition-all cursor-pointer shadow-xs flex items-center gap-1.5"
+            >
+              <span>Nog één</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+
+            {/* Iets luchtiger */}
+            <button
+              onClick={() => handleSetDepth('luchtig')}
+              className={`px-4 py-3 rounded-2xl text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                currentDepth === 'luchtig'
                   ? 'bg-[#FAF0ED] border-[#BD3A53] text-[#BD3A53]'
                   : 'bg-white border-[#EFE6DE] hover:border-[#BD3A53] text-[#201A18]'
               }`}
             >
-              <Heart className={`w-3.5 h-3.5 ${hasLiked ? 'fill-[#BD3A53] text-[#BD3A53]' : ''}`} />
-              <span>{likes}</span>
+              <Feather className="w-3.5 h-3.5 text-[#BD3A53]" />
+              <span>Iets luchtiger</span>
             </button>
 
+            {/* Iets persoonlijker */}
+            <button
+              onClick={() => handleSetDepth('persoonlijk')}
+              className={`px-4 py-3 rounded-2xl text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                currentDepth === 'persoonlijk'
+                  ? 'bg-[#FAF0ED] border-[#BD3A53] text-[#BD3A53]'
+                  : 'bg-white border-[#EFE6DE] hover:border-[#BD3A53] text-[#201A18]'
+              }`}
+            >
+              <HeartHandshake className="w-3.5 h-3.5 text-[#BD3A53]" />
+              <span>Iets persoonlijker</span>
+            </button>
+
+            {/* Share / Copy (quietly kept for utility) */}
             <button
               onClick={handleShare}
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-xs font-semibold border border-[#EFE6DE] hover:border-[#BD3A53] bg-white text-[#201A18] transition-colors cursor-pointer"
+              className="p-3 rounded-2xl text-xs font-medium border border-[#EFE6DE] hover:border-[#BD3A53] bg-white text-[#6E625D] hover:text-[#201A18] transition-colors cursor-pointer"
+              title="Kopieer vraag"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-[#BD3A53]" /> : <Share2 className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Gekopieerd!' : 'Deel vraag'}</span>
+              {copied ? <Check className="w-4 h-4 text-[#BD3A53]" /> : <Share2 className="w-4 h-4" />}
             </button>
 
-            <button
-              onClick={handleNext}
-              className="px-5 py-2.5 rounded-2xl text-xs font-semibold text-white bg-[#BD3A53] hover:bg-[#A72D45] transition-colors cursor-pointer shadow-xs flex items-center gap-1.5"
-            >
-              <span>Volgende gratis vraag</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Locked Teaser Cards Preview (The "Jaaaa dit moet ik hebben" Paywall Hook) */}
-        <div className="relative rounded-3xl p-8 bg-white border border-[#EFE6DE] overflow-hidden shadow-xs">
-          
-          <div className="absolute inset-0 bg-[#FAF5F0]/80 backdrop-blur-xs z-10 flex flex-col items-center justify-center p-6 text-center">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF0ED] text-[#BD3A53] flex items-center justify-center mb-4 shadow-2xs">
-              <Lock className="w-6 h-6" />
-            </div>
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#201A18] mb-2 font-normal">
-              De overige 500+ vragen & themapacks staan voor je klaar
-            </h3>
-            <p className="text-xs sm:text-sm text-[#6E625D] max-w-md mx-auto mb-6 leading-relaxed">
-              Van Eerste Date Specials tot Weekend Weg en diepgaande koppelsessies. Ontgrendel alle sferen en start direct op je beginscherm.
-            </p>
-            <button
-              onClick={onOpenInstallModal}
-              className="px-8 py-4 rounded-2xl text-xs font-semibold text-white bg-[#BD3A53] hover:bg-[#A72D45] transition-all shadow-sm cursor-pointer flex items-center gap-2"
-            >
-              <Smartphone className="w-4 h-4" />
-              <span>Zet op beginscherm & ontgrendel alles</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </div>
 
-          {/* Blurred background locked items */}
-          <div className="space-y-4 filter blur-xs select-none opacity-40 pointer-events-none">
-            <div className="p-5 bg-[#FAF5F0] rounded-2xl border border-[#EFE6DE]">
-              <span className="text-[10px] font-bold text-[#BD3A53] uppercase tracking-wider">🔒 Weekend Weg Pack</span>
-              <h4 className="font-serif text-lg text-[#201A18] mt-1">&ldquo;Wat is een droom die we samen nog nooit hebben durven uitspreken?&rdquo;</h4>
-            </div>
-            <div className="p-5 bg-[#FAF5F0] rounded-2xl border border-[#EFE6DE]">
-              <span className="text-[10px] font-bold text-[#BD3A53] uppercase tracking-wider">🔒 Eerste Date Chemie</span>
-              <h4 className="font-serif text-lg text-[#201A18] mt-1">&ldquo;Wat is de grappigste misvatting die mensen vaak over jou hebben?&rdquo;</h4>
-            </div>
+          {/* Micro text on depth control */}
+          <div className="mt-6 text-[11px] text-[#6E625D]">
+            Jullie bepalen altijd zelf de diepte van het gesprek.
           </div>
 
         </div>

@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInstallModal }) => {
               &ldquo;De juiste vraag. Op het juiste moment.&rdquo;
             </p>
             <p className="text-xs text-[#6E625D] leading-relaxed font-normal">
-              Een interactieve gesprekservaring voor twee mensen. Niet om méér op je telefoon te zitten, maar om meer met elkaar te zijn.
+              Tussen Ons opent gesprekken met vragen, dilemma’s en kleine opdrachten die passen bij wie er tegenover je zit.
             </p>
           </div>
 
@@ -29,24 +29,32 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInstallModal }) => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 text-xs">
             <div>
               <span className="font-bold uppercase tracking-wider text-[#BD3A53] block mb-3 font-sans">
-                Navigatie
+                Het Gesprek
               </span>
               <ul className="space-y-2 text-[#6E625D]">
-                <li><a href="#herkenning" className="hover:text-[#BD3A53] transition-colors">Waarom Tussen Ons</a></li>
+                <li><a href="#probeer-het" className="hover:text-[#BD3A53] transition-colors">Probeer een vraag</a></li>
+                <li><a href="#herkenbaar" className="hover:text-[#BD3A53] transition-colors">Herkenbaar?</a></li>
                 <li><a href="#hoe-het-werkt" className="hover:text-[#BD3A53] transition-colors">Hoe het werkt</a></li>
-                <li><a href="#vibes" className="hover:text-[#BD3A53] transition-colors">Sferen & Packs</a></li>
-                <li><a href="#plus" className="hover:text-[#BD3A53] transition-colors">Plus & Abonnementen</a></li>
+                <li><a href="#vibes" className="hover:text-[#BD3A53] transition-colors">Sferen & Diepte</a></li>
               </ul>
             </div>
 
             <div>
               <span className="font-bold uppercase tracking-wider text-[#BD3A53] block mb-3 font-sans">
-                Installatie & Privacy
+                Ontdekken
               </span>
               <ul className="space-y-2 text-[#6E625D]">
-                <li><a href="#installeren" className="hover:text-[#BD3A53] transition-colors">Zet op beginscherm</a></li>
-                <li><a href="#faq" className="hover:text-[#BD3A53] transition-colors">Veelgestelde Vragen</a></li>
-                <li><a href="#privacy" className="hover:text-[#BD3A53] transition-colors">100% Privacybelofte</a></li>
+                <li><a href="#filosofie" className="hover:text-[#BD3A53] transition-colors">Onze Filosofie</a></li>
+                <li><a href="#plus" className="hover:text-[#BD3A53] transition-colors">Tussen Ons Plus</a></li>
+                <li>
+                  <button
+                    onClick={onOpenInstallModal}
+                    className="hover:text-[#BD3A53] transition-colors text-left cursor-pointer"
+                  >
+                    Zet op beginscherm
+                  </button>
+                </li>
+                <li><a href="#faq" className="hover:text-[#BD3A53] transition-colors">Vragen & Privacy</a></li>
               </ul>
             </div>
 
@@ -65,6 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInstallModal }) => {
                 </li>
                 <li>Geen App Store vereist</li>
                 <li>Werkt op iPhone & Android</li>
+                <li>100% Privé</li>
               </ul>
             </div>
           </div>

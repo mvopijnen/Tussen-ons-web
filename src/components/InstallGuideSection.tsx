@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, Share, PlusSquare, MoreVertical, Check, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Share, PlusSquare, MoreVertical, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface InstallGuideSectionProps {
   onOpenInstallModal: () => void;
@@ -14,16 +14,14 @@ export const InstallGuideSection: React.FC<InstallGuideSectionProps> = ({ onOpen
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase text-[#BD3A53] mb-3 font-sans">
-            <span>Progressive Web App</span>
-            <span aria-hidden="true">·</span>
-            <span>Geen App Store Nodig</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EFE6DE] text-xs font-bold uppercase tracking-widest text-[#BD3A53] mb-4 shadow-2xs font-sans">
+            <span>Altijd bij de hand</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#201A18] tracking-tight mb-4">
-            Zet Tussen Ons op je beginscherm
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#201A18] tracking-tight mb-4 font-normal">
+            Altijd bij de hand wanneer een moment erom vraagt.
           </h2>
           <p className="text-base sm:text-lg text-[#6E625D] font-normal leading-relaxed text-balance">
-            Installeer de app in 10 seconden direct vanuit je browser. Geen account vereist, geen App Store downloads, direct klaar voor jullie date of date night.
+            Bewaar Tussen Ons op je beginscherm en open het wanneer jullie zin hebben in iets anders dan de standaardvraag.
           </p>
         </div>
 
@@ -86,7 +84,7 @@ export const InstallGuideSection: React.FC<InstallGuideSectionProps> = ({ onOpen
                     Kies &ldquo;Zet op beginscherm&rdquo;
                   </h3>
                   <p className="text-xs text-[#6E625D] leading-relaxed">
-                    Scroll in het deelmenu omlaag en selecteer <PlusSquare className="w-3.5 h-3.5 inline text-[#BD3A53]" /> <strong>&ldquo;Zet op beginscherm&rdquo;</strong>.
+                    Scroll in het menu omlaag en selecteer <PlusSquare className="w-3.5 h-3.5 inline text-[#BD3A53]" /> <strong>&ldquo;Zet op beginscherm&rdquo;</strong>.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-[#EFE6DE]/60 text-[11px] text-[#6E625D]">
@@ -103,7 +101,7 @@ export const InstallGuideSection: React.FC<InstallGuideSectionProps> = ({ onOpen
                     Tik op &ldquo;Voeg toe&rdquo;
                   </h3>
                   <p className="text-xs text-[#6E625D] leading-relaxed">
-                    Het Tussen Ons icoon staat nu direct op je thuisscherm en start zonder browserbalken!
+                    Het Tussen Ons icoon staat nu direct op je scherm en start zonder browserbalken.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-[#EFE6DE]/60 text-[11px] font-semibold text-[#BD3A53]">
@@ -160,7 +158,7 @@ export const InstallGuideSection: React.FC<InstallGuideSectionProps> = ({ onOpen
                     Direct geïnstalleerd
                   </h3>
                   <p className="text-xs text-[#6E625D] leading-relaxed">
-                    Open de app direct als native ervaring zonder laadtijd of browserkaders.
+                    Open de app direct als soepele ervaring zonder laadtijd of store downloads.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-[#EFE6DE]/60 text-[11px] font-semibold text-[#BD3A53]">
